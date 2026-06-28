@@ -33,15 +33,14 @@ Popped the IP into a browser to poke around the web service. Turns out it's a **
 
 <img width="719" height="159" alt="image" src="https://github.com/user-attachments/assets/f77c94ec-2d20-4d82-80ca-611f419d2b8b" />
 
-
-<img width="719" height="159" alt="image" src="https://github.com/user-attachments/assets/d6547331-de59-47fd-b5c9-56ba64a80a65" />
+<img width="1189" height="474" alt="image" src="https://github.com/user-attachments/assets/482d2ed8-f0db-4356-9370-0213c6e09564" />
 
 
 Found a GitHub repo that chains CVE-2025-57819 with CVE-2025-61678 (authenticated file upload) into one exploit. Cloned it and ran it with a basic `id` command to test.
 
 https://github.com/0xEhab/FreePBX-CVE-2025-57819-RCE
 
-<img width="719" height="159" alt="image" src="https://github.com/user-attachments/assets/9736667f-a79e-4907-9993-be9e44dfc0b1" />
+<img width="1266" height="755" alt="image" src="https://github.com/user-attachments/assets/3156551b-cfb7-47de-834b-de2a6f9778c7" />
 
 
 Exploit worked first try. Here's what it does under the hood: first it uses the stacked SQLi to inject a new admin user straight into the `ampusers` table, then logs into the FreePBX admin panel with those fresh credentials, and finally uploads a PHP webshell through the authenticated file upload feature. End result — remote command execution as the `asterisk` user (UID 999).
@@ -71,8 +70,11 @@ Exploit worked first try. Here's what it does under the hood: first it uses the 
 [*] executing: id
 uid=999(asterisk) gid=1000(asterisk) groups=1000(asterisk)
 ```
-<img width="719" height="159" alt="image" src="https://github.com/user-attachments/assets/80bfe7d3-fe8f-4623-9e83-90b55d393277" />
-<img width="719" height="159" alt="image" src="https://github.com/user-attachments/assets/a76bc4da-d7b1-43e4-9dca-2d204cf4d7af" />
+
+<img width="789" height="410" alt="image" src="https://github.com/user-attachments/assets/47823dc7-a5cf-4b02-a71d-978039785b4f" />
+
+
+<img width="821" height="695" alt="image" src="https://github.com/user-attachments/assets/e6673b4e-bf16-4525-a934-39fab319d16b" />
 
 
 ---
